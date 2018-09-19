@@ -1,0 +1,24 @@
+{
+  "name": "sunproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/systemkwiat/SunProject.git"
+  },
+  "author": "Kamil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/systemkwiat/SunProject/issues"
+  },
+  "homepage": "https://github.com/systemkwiat/SunProject#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}
