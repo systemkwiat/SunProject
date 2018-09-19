@@ -86,6 +86,16 @@ app.delete('/suns/:id', function(req, res){
 });
 
 
+app.get('/registration', function(req, res){
+    res.render('registration');
+});
+
+app.get('/signin', function(req, res){
+    res.render('signIn');
+});
+
+
+
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("Sun is running :) Good job "); 
 });
