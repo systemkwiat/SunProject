@@ -1,40 +1,32 @@
 <% include parts/header %>
 
 
+
+
+
+
 <div class='container'>
     <div class='row'>
+      
+        <div class='col-12'>
+<a style="display: block; width:10%; padding:10px; margin: 10px auto;"  class="btn btn-primary" href="/suns/new" role="button">Add New</a>
+        </div>
+      
+      
+      
+      <% sun.forEach(function(sun){ %>
+      
+
+    
+        
         <div class='col-lg-6 col-sm-12'>
-            <h1>Title</h1>
-            <img src="https://cdn.pixabay.com/photo/2016/07/28/08/50/sunbeam-1547273_1280.jpg" class='img-fluid' alt="Responsive image">
-            <p>Data</p>
-            <p>Quisque a dignissim ligula, feugiat scelerisque magna. Cras sagittis elit vitae ligula viverra dictum. Aenean felis diam, tempor vestibulum finibus nec, tincidunt ornare purus. Proin diam odio, interdum a leo id, consequat suscipit nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam posuere vitae turpis vel vehicula. Pellentesque cursus ligula maximus tellus lacinia ullamcorper.</p>
+            <h1><%= sun.title %></h1>
+            <img src="<%= sun.img %>" class='img-fluid' alt="Responsive image">
+            <p><%= sun.data %></p>
+            <p><%=sun.content%></p>
         </div>
         
-          <div class='col-lg-6 col-sm-12'>
-            <h1>Title</h1>
-            <img src="https://cdn.pixabay.com/photo/2016/07/28/08/50/sunbeam-1547273_1280.jpg" class='img-fluid' alt="Responsive image">
-            <p>Data</p>
-            <p>Quisque a dignissim ligula, feugiat scelerisque magna. Cras sagittis elit vitae ligula viverra dictum. Aenean felis diam, tempor vestibulum finibus nec, tincidunt ornare purus. Proin diam odio, interdum a leo id, consequat suscipit nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam posuere vitae turpis vel vehicula. Pellentesque cursus ligula maximus tellus lacinia ullamcorper.</p>
-        </div>
-        
-          <div class='col-lg-6 col-sm-12'>
-            <h1>Title</h1>
-            <img src="https://cdn.pixabay.com/photo/2016/07/28/08/50/sunbeam-1547273_1280.jpg" class='img-fluid' alt="Responsive image">
-            <p>Data</p>
-            <p>Quisque a dignissim ligula, feugiat scelerisque magna. Cras sagittis elit vitae ligula viverra dictum. Aenean felis diam, tempor vestibulum finibus nec, tincidunt ornare purus. Proin diam odio, interdum a leo id, consequat suscipit nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam posuere vitae turpis vel vehicula. Pellentesque cursus ligula maximus tellus lacinia ullamcorper.</p>
-        </div>
-        
-          <div class='col-lg-6 col-sm-12'>
-            <h1>Title</h1>
-            <img src="https://cdn.pixabay.com/photo/2016/07/28/08/50/sunbeam-1547273_1280.jpg" class='img-fluid' alt="Responsive image">
-            <p>Data</p>
-            <p>Quisque a dignissim ligula, feugiat scelerisque magna. Cras sagittis elit vitae ligula viverra dictum. Aenean felis diam, tempor vestibulum finibus nec, tincidunt ornare purus. Proin diam odio, interdum a leo id, consequat suscipit nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam posuere vitae turpis vel vehicula. Pellentesque cursus ligula maximus tellus lacinia ullamcorper.</p>
-        </div>
-        
-        
-        
-        
-        
+            <%  }) %>
     </div>
 </div>
 
