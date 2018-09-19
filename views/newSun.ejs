@@ -4,25 +4,29 @@
     <div class='row'>
 <h1>Create New Sunrise</h1>
 
-<form style="width:40%;margin 20px auto;">
+<form method='POST' action="/suns" style="width:40%;margin 20px auto;">
     <div class='form-group'>
         <label for="title">Title</label>
-        <input class="form-control" type="text" placeholder="title" name="title">
+        <input class="form-control" type="text" placeholder="title" name="sun[title]">
     </div>
     
      <div class='form-group'>
         <label for="image">Image</label>
-        <input class="form-control" type="text" placeholder="image" name="image URL please">
+        <input class="form-control" type="text" placeholder="image URL please" name="sun[img]">
     </div>
     
      <div class='form-group'>
         <label for="title">Data</label>
-        <input class="form-control" type="text" placeholder="When did you took a pic ?" name="data">
+        <input class="form-control" type="text" placeholder="When did you took a pic ?" name="sun[data]">
     </div>
     
      <div class='form-group'>
         <label for="title">A few worlds about this sunrise</label>
-        <textarea class="form-control"></textarea>
+        <textarea name='sun[content]' class="form-control"></textarea>
+    </div>
+    
+    <div class=form-group>
+         <button class='btn btn-lg btn-primary btn-block' type="submit">Submit!</button>
     </div>
     
     

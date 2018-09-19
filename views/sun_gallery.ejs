@@ -22,7 +22,13 @@
         <div class='col-lg-6 col-sm-12'>
             <h1><%= sun.title %></h1>
             <img src="<%= sun.img %>" class='img-fluid' alt="Responsive image">
-            <p><%= sun.data %></p>
+            <p style="margin-top:5px;">
+              <%= sun.data %> 
+              <form method="POST" action="/suns/<%= sun._id %>?_method=DELETE">
+                 <button class='btn-danger'>Delete</button>
+              </form>
+             
+            </p>
             <p><%=sun.content%></p>
         </div>
         

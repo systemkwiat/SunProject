@@ -2,10 +2,16 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser")
 var mongoose = require("mongoose");
+var methodOverride = require("method-override");
 
-mongoose.connect("mongodb://localhost:27017/sunDB")
+
+
+
+
+mongoose.connect("mongodb://localhost:27017/sunDB");
 app.use(bodyParser.urlencoded({extended: true}));
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
+app.use(methodOverride("_method"));
 
 
 
@@ -45,7 +51,6 @@ app.get('/suns', function(req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(allSuns);
             res.render('sun_gallery', {sun: allSuns});
         }
     });
@@ -53,6 +58,31 @@ app.get('/suns', function(req, res){
 
 app.get('/suns/new', function(req, res){
    res.render('newSun');
+});
+
+// Create and add new SunRise
+app.post('/suns', function(req, res){
+    
+    Sun.create(req.body.sun, function(err, newSun){
+        if(err){
+            res.render('home');
+        } else {
+            console.log(newSun)
+            res.redirect('/suns');
+        }
+    });
+});
+
+// DELETE sunrise
+app.delete('/suns/:id', function(req, res){
+    //delete form db
+    Sun.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect('/');
+        } else {
+            res.redirect('/suns');
+        }
+    });
 });
 
 
