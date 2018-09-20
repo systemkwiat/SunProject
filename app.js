@@ -9,7 +9,9 @@ var User = require("./models/user.js")
 
 
 
-mongoose.connect("mongodb://localhost:27017/sunDB");
+// mongoose.connect("mongodb://localhost:27017/sunDB");
+mongoose.connect("mongodb://sunadmin:sunroot01@ds235732.mlab.com:35732/sunproject");
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(methodOverride("_method"));
