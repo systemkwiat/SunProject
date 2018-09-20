@@ -66,6 +66,10 @@ var Sun = mongoose.model("Sun", sunSchema);
 //   }
 // });
 
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
+});
 
 
 // HOME PAGE
@@ -79,12 +83,12 @@ app.get('/suns', function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render('sun_gallery', {sun: allSuns});
+            res.render('sun_gallery', {sun: allSuns, currentUser: req.user});
         }
     });
 });
 
-app.get('/suns/new', function(req, res){
+app.get('/suns/new', isLoggedIn, function(req, res){
    res.render('newSun');
 });
 
@@ -101,7 +105,7 @@ app.post('/suns', function(req, res){
 });
 
 // DELETE sunrise
-app.delete('/suns/:id', function(req, res){
+app.delete('/suns/:id', isLoggedIn, function(req, res){
     //delete form db
     Sun.findByIdAndRemove(req.params.id, function(err){
         if(err){
@@ -115,9 +119,7 @@ app.delete('/suns/:id', function(req, res){
 
 
 
-app.get('/signin', function(req, res){
-    res.render('signIn');
-});
+
 
 
 
@@ -130,7 +132,7 @@ app.get('/registration', function(req, res){
 });
 
 app.post('/registration', function(req, res){
-    var newUser = new User({username: req.body.username, name: req.body.name});
+    var newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
@@ -141,7 +143,34 @@ app.post('/registration', function(req, res){
         });
     });
 });
+// ======== LOG IN 
+app.get('/signin', function(req, res){
+    res.render('signIn');
+});
 
+app.post('/signin', passport.authenticate('local', 
+    {
+        successRedirect: '/suns',
+        failureRedirect: '/'
+    
+}), function(req, res){
+    
+});
+
+// LOG OUT
+app.get('/logout', function(req, res){
+   req.logout();
+   res.redirect('/suns')
+});
+
+
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/signin');
+}
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
