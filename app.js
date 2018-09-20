@@ -113,12 +113,33 @@ app.delete('/suns/:id', function(req, res){
 });
 
 
+
+
+app.get('/signin', function(req, res){
+    res.render('signIn');
+});
+
+
+
+// =============
+// AUTH ROUTES
+//==============
+
 app.get('/registration', function(req, res){
     res.render('registration');
 });
 
-app.get('/signin', function(req, res){
-    res.render('signIn');
+app.post('/registration', function(req, res){
+    var newUser = new User({username: req.body.username, name: req.body.name});
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+           return  res.render('registration')
+        } 
+        passport.authenticate('local')(req, res, function(){
+            res.redirect('/suns');
+        });
+    });
 });
 
 
