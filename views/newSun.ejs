@@ -1,10 +1,13 @@
 <% include parts/header %>
 
 <div class='container'>
+    
+    <h1 class='shadow-sm p-3 mb-5 bg-white rounded font-weight-light' style="text-align:center; margin-top:28px;">Create New Sunrise<br></h1>
+    
     <div class='row'>
-<h1>Create New Sunrise</h1>
 
-<form method='POST' action="/suns" style="width:40%;margin 20px auto;">
+
+<form method='POST' action="/suns" style="width:40%; margin: 20px auto;">
     <div class='form-group'>
         <label for="title">Title</label>
         <input class="form-control" type="text" placeholder="title" name="sun[title]">

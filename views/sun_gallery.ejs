@@ -7,6 +7,7 @@
 
 <div class='container'>
     <div class='row'>
+      <h1 style="display: block; width:50%; padding:10px; margin: 10px auto;" class="font-weight-light text-center text-justify">Turn your face to the sun and the shadows fall behind you</h1>
       
         <div class='col-12'>
 <a style="display: block; width:10%; padding:10px; margin: 10px auto;"  class="btn btn-primary" href="/suns/new" role="button">Add New</a>
@@ -19,17 +20,18 @@
 
     
         
-        <div class='col-lg-6 col-sm-12'>
-            <h1><%= sun.title %></h1>
-            <img src="<%= sun.img %>" class='img-fluid' alt="Responsive image">
-            <p style="margin-top:5px;">
+        <div class='col-lg-6 col-sm-12 '>
+            <h3 style="text-align:center;"><%= sun.title %></h3>
+            <img style="display: block;margin: 0 auto;" src="<%= sun.img %>" class='img-fluid rounded' alt="Responsive image">
+            <p class="text-center" style="margin-top:5px;">
               <%= sun.data %> 
-              <form method="POST" action="/suns/<%= sun._id %>?_method=DELETE">
-                 <button class='btn-danger'>Delete</button>
-              </form>
+
              
             </p>
-            <p><%=sun.content%></p>
+            <p class="text-justify text-center border font-weight-light"><%=sun.content%></p>
+                          <form method="POST" action="/suns/<%= sun._id %>?_method=DELETE">
+                 <button class='btn-danger'>Delete</button>
+                           </form>
         </div>
         
             <%  }) %>
