@@ -3,8 +3,9 @@ var app = express();
 var bodyParser = require("body-parser")
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
-
-
+var passport = require("passport");
+var LocalStrategy = require("passport-local")
+var User = require("./models/user.js")
 
 
 
@@ -13,12 +14,39 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(methodOverride("_method"));
 
+//PASSPORT CONFIG
+app.use(require('express-session')({
+    secret: "This is system secret",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+// User.create({
+//     name: 'Kamil',
+//     username: "system",
+//     password: '1234'
+// }, function(err, newUser){
+//     if (err){
+//         console.log(err);
+//         console.log("not working");
+//     } else {
+//         console.log('\n WE DID IT \n');
+//         console.log(newUser);
+//     }
+// });
 
 
 var sunSchema = new mongoose.Schema({
    title: String,
    img: String,
-   data: String,
+   data: {type: Date, default: Date.now},
    content: String
 });
 
@@ -67,7 +95,6 @@ app.post('/suns', function(req, res){
         if(err){
             res.render('home');
         } else {
-            console.log(newSun)
             res.redirect('/suns');
         }
     });
